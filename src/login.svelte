@@ -1,13 +1,13 @@
 <script>
   import { pb, user } from "./stores";
-  let email, password, errors, loading;
+  let domain, password, errors, loading;
   const login = async (e) => {
     loading = true;
     errors = false;
     try {
       const res = await pb
         .collection("users")
-        .authWithPassword(email, password);
+        .authWithPassword(domain, password);
       if (res) user.set(pb.authStore.model);
     } catch (err) {
       errors = true;
@@ -36,27 +36,14 @@
                   <p class="mb-4">Please login to your account</p>
                   <div class="relative flex items-center mt-2">
                     <span class="absolute">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                        />
-                      </svg>
+                      <i class="fas fa-globe text-[#d1d5db] text-[18px] px-3" />
                     </span>
 
                     <input
-                      bind:value={email}
-                      type="email"
-                      class="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                      placeholder="Email address"
+                      bind:value={domain}
+                      type="text"
+                      class="block w-full py-3 text-gray-700 bg-white border rounded-lg px-10 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                      placeholder="Domain (ex: elegantwebcreations.com)"
                     />
                   </div>
 
