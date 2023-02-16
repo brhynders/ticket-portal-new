@@ -1,12 +1,11 @@
 <script>
-    import {pb} from './stores';
-    import {user} from './stores';
-    import Login from "./login.svelte";
-    import Dashboard from "./dashboard.svelte";
+  import { user } from "./stores";
+  import Login from "./login.svelte";
+  import Dashboard from "./dashboard.svelte";
 </script>
 
 {#if $user}
-    <Dashboard />
+  <Dashboard />
 {:else}
-    <Login />
+  <Login />
 {/if}
